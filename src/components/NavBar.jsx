@@ -1,14 +1,52 @@
-import logo from "../assets/logo.png";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import logoDark from "../assets/logo-dark.png";
+import logoLight from "../assets/logo-light.png";
 
 const NavBar = () => {
+  // Initialize `isDarkMode` state based on the user's current system theme preference
+  const [isDarkMode, setIsDarkMode] = useState(
+    window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
+
+  useEffect(() => {
+    // Create a MediaQueryList object to track changes to the user's color scheme preference
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // Event handler that updates the `isDarkMode` state when the system theme changes
+    const handleChange = (e) => {
+      setIsDarkMode(e.matches); // true if dark mode, false if light mode
+    };
+
+    // Attach the listener to respond to theme changes in real time
+    mediaQuery.addEventListener("change", handleChange);
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      // This prevents memory leaks and ensures the event handler
+      // does not run after the component is no longer mounted.
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
   return (
-    <div>
-      <img src={logo} alt="logo.png" />
+    <div className="navbar">
+      <img src={isDarkMode ? logoLight : logoDark} alt="react-router.png" />
       <ul>
-        <li>Home</li>
-        <li>Products</li>
-        <li>About</li>
-        <li>Contact</li>
+        <Link to="/">
+          <li>Home</li>
+        </Link>
+        <Link to="/products">
+          <li>Products</li>
+        </Link>
+        <Link to="/about">
+          <li>About</li>
+        </Link>
+        <Link to="/contact">
+          <li>Contact</li>
+        </Link>
       </ul>
       <button>Get Started</button>
     </div>

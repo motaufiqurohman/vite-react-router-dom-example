@@ -44,6 +44,10 @@ body {
   margin: 0 10px;
 }
 
+a.active {
+  color: red;
+}
+
 .navbar button {
   background: light-dark(#000, #fff);
   color: light-dark(#fff, #000);

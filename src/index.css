@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  color-scheme: light dark;
+  font-family: monospace;
+}
+
+body {
+  color: light-dark(#1e2939, #fff);
+  background-color: light-dark(#fff, #1e2939);
+}

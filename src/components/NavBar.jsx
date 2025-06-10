@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import logoDark from "../assets/logo-dark.png";
 import logoLight from "../assets/logo-light.png";
@@ -31,6 +31,8 @@ const NavBar = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <img src={isDarkMode ? logoLight : logoDark} alt="react-router.png" />
@@ -48,7 +50,9 @@ const NavBar = () => {
           <li>Contact</li>
         </NavLink>
       </ul>
-      <button>Get Started</button>
+      <button onClick={() => navigate("/contact", { replace: true })}>
+        Get Started
+      </button>
     </div>
   );
 };

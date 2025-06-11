@@ -7,7 +7,9 @@ const NotFound = () => {
     <div>
       <h2>404 | Page not found</h2>
       <br />
-      <button onClick={() => navigate("/")}>Go to homepage</button>
+      <button className="btn" onClick={() => navigate("/")}>
+        Go to homepage
+      </button>
     </div>
   );
 };

@@ -7,8 +7,12 @@ const Contact = () => {
     <div>
       <h1>Contact Page</h1>
       <div className="contact-buttons">
-        <button onClick={() => navigate("/contact/info")}>Contact Info</button>
-        <button onClick={() => navigate("/contact/form")}>Contact Form</button>
+        <button className="btn" onClick={() => navigate("/contact/info")}>
+          Contact Info
+        </button>
+        <button className="btn" onClick={() => navigate("/contact/form")}>
+          Contact Form
+        </button>
       </div>
     </div>
   );

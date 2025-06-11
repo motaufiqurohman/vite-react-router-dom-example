@@ -35,7 +35,11 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      <img src={isDarkMode ? logoLight : logoDark} alt="react-router.png" />
+      <img
+        onClick={() => navigate("/")}
+        src={isDarkMode ? logoLight : logoDark}
+        alt="react-router.png"
+      />
       <ul>
         <NavLink to="/">
           <li>Home</li>

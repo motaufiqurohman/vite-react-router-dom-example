@@ -12,8 +12,9 @@ import About from "./pages/About";
 import ContactLayout from "./layout/ContactLayout";
 import ContactInfo from "./components/ContactInfo";
 import ContactForm from "./components/ContactForm";
-import Jobs, { jobsLoader } from "./pages/Jobs";
 import JobsLayout from "./layout/JobsLayout";
+import Jobs, { jobsLoader } from "./pages/Jobs";
+import JobDetails, { jobDetailsLoader } from "./pages/JobDetails";
 import NotFound from "./components/NotFound";
 
 const App = () => {
@@ -29,6 +30,11 @@ const App = () => {
         </Route>
         <Route path="jobs" element={<JobsLayout />}>
           <Route index element={<Jobs />} loader={jobsLoader} />
+          <Route
+            path=":id"
+            element={<JobDetails />}
+            loader={jobDetailsLoader}
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

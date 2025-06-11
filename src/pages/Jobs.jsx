@@ -6,7 +6,7 @@ const Jobs = () => {
   return (
     <div className="jobs">
       {jobsData.map((job) => (
-        <Link key={job.id}>
+        <Link key={job.id} to={job.id.toString()}>
           <h4>{job.title}</h4>
           <p>{job.location}</p>
         </Link>

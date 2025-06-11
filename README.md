@@ -160,10 +160,10 @@ Follow these steps to run the project locally:
 
 ```
 src/
-├── components/      # Reusable components
-├── pages/           # Page components for different routes
 ├── assets/          # Static assets and JSON data files
-├── routes/          # Route configuration
+├── components/      # Reusable components
+├── layout/          # Layout-related components
+├── pages/           # Page components for different routes
 └── main.jsx         # Application entry point
 ```
 

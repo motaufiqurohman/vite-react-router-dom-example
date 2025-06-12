@@ -1,35 +1,17 @@
-import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import logoDark from "../assets/logo-dark.png";
-import logoLight from "../assets/logo-light.png";
+import useDarkMode from "../hooks/useDarkMode";
+
+import logoBlack from "../assets/react-router-logo-black.png";
+import logoWhite from "../assets/react-router-logo-white.png";
+
+const LOGO_THEME_MAP = {
+  light: logoBlack,
+  dark: logoWhite,
+};
 
 const NavBar = () => {
-  // Initialize `isDarkMode` state based on the user's current system theme preference
-  const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
-
-  useEffect(() => {
-    // Create a MediaQueryList object to track changes to the user's color scheme preference
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // Event handler that updates the `isDarkMode` state when the system theme changes
-    const handleChange = (e) => {
-      setIsDarkMode(e.matches); // true if dark mode, false if light mode
-    };
-
-    // Attach the listener to respond to theme changes in real time
-    mediaQuery.addEventListener("change", handleChange);
-
-    // Cleanup function to remove the event listener when the component unmounts
-    return () => {
-      // This prevents memory leaks and ensures the event handler
-      // does not run after the component is no longer mounted.
-      mediaQuery.removeEventListener("change", handleChange);
-    };
-  }, []);
+  const isDarkMode = useDarkMode();
 
   const navigate = useNavigate();
 
@@ -37,7 +19,7 @@ const NavBar = () => {
     <div className="navbar">
       <img
         onClick={() => navigate("/")}
-        src={isDarkMode ? logoLight : logoDark}
+        src={isDarkMode ? LOGO_THEME_MAP.dark : LOGO_THEME_MAP.light}
         alt="react-router.png"
       />
       <ul>

@@ -5,6 +5,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import useDarkMode from "./hooks/useDarkMode";
+
+import FaviconSwitcher from "./components/FaviconSwitcher";
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -19,6 +22,8 @@ import Error from "./components/Error";
 import NotFound from "./components/NotFound";
 
 const App = () => {
+  const isDarkMode = useDarkMode();
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
@@ -42,7 +47,12 @@ const App = () => {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <FaviconSwitcher isDarkMode={isDarkMode} />
+      <RouterProvider router={router} />
+    </>
+  );
 };
 
 export default App;
